@@ -1,0 +1,16 @@
+# R artifacts
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# renv (lock file YES, library NO)
+renv/library/
+renv/staging/
+
+# Output files (regenerable from script — optional to track)
+*.png
+*.pdf
+
+# macOS
+.DS_Store
