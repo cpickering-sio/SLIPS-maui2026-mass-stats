@@ -1,14 +1,42 @@
 # R artifacts
 .Rhistory
+.Rapp.history
 .RData
+.RDataTmp
+.Ruserdata
+
+# R project files
 .Rproj.user/
 *.Rproj
 
-# renv (lock file YES, library NO)
+# renv (commit lock file, not library)
 renv/library/
 renv/staging/
 
-# Output files (regenerable from script — optional to track)
+# R package build artifacts
+*-Ex.R
+/*.tar.gz
+/*.Rcheck/
+
+# R Markdown / knitr
+*_cache/
+/cache/
+*.utf8.md
+*.knit.md
+vignettes/*.html
+vignettes/*.pdf
+
+# Auth tokens
+.httr-oauth
+
+# Environment variables
+.Renviron
+
+# pkgdown / docs
+docs/
+rsconnect/
+
+# Output files (regenerable from script)
 *.png
 *.pdf
 
