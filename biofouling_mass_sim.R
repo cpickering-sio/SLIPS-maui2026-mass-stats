@@ -47,27 +47,28 @@ flange_data <- tibble(
   sample_id = c(
     "Glass_Control_1", "Glass_Control_2", "Glass_Control_3",
     "Glass_SLIPS_1",   "Glass_SLIPS_2",   "Glass_SLIPS_3",
-    "Acrylic_1",       "Acrylic_2"
+    "Acrylic_1",       "Acrylic_2",       "Acrylic_3"
   ),
   treatment = factor(
-    c(rep("Glass_Control", 3), rep("Glass_SLIPS", 3), rep("Acrylic", 2)),
+    c(rep("Glass_Control", 3), rep("Glass_SLIPS", 3), rep("Acrylic", 3)),
     levels = c("Glass_Control", "Glass_SLIPS", "Acrylic")
   ),
-  substrate = c(rep("Glass", 6), rep("Acrylic", 2)),
+  substrate = c(rep("Glass", 6), rep("Acrylic", 3)),
 
   # W1: pre-deployment dry mass (g)
+  # Measured values: control glass ~34.8g, SLIPS glass ~35.5g, acrylic ~1.7g less than control (~33.1g)
   W1_g = c(
-    50.21, 49.87, 50.14,   # glass control
-    50.68, 50.43, 50.59,   # SLIPS coated (slightly heavier due to coating)
-    33.05, 32.91            # acrylic (lighter than glass)
+    34.75, 34.82, 34.79,         # glass control (~34.8g measured)
+    35.48, 35.52, 35.49,         # SLIPS coated  (~35.5g measured)
+    33.08, 33.14, 33.11          # acrylic        (~33.1g = 34.8 - 1.7g)
   ),
 
   # W3: post-desiccation dry mass (g) — W1 + accrued dry biomass
   # ΔW values grounded in literature (see comments above)
   W3_g = c(
-    50.42, 50.58, 50.37,   # glass control (+0.21, +0.71, +0.23 g) — mean ~0.22g
-    50.70, 50.46, 50.61,   # SLIPS coated  (+0.02, +0.03, +0.02 g) — mean ~0.02g
-    33.27, 33.16            # acrylic       (+0.22, +0.25 g)        — mean ~0.24g
+    34.96, 35.53, 35.02,         # glass control (+0.21, +0.71, +0.23 g) — mean ~0.22g
+    35.50, 35.55, 35.51,         # SLIPS coated  (+0.02, +0.03, +0.02 g) — mean ~0.02g
+    33.30, 33.39, 33.35          # acrylic       (+0.22, +0.25, +0.24 g) — mean ~0.24g
   )
 )
 
@@ -105,6 +106,7 @@ print(summary_stats)
 # =============================================================================
 # NOTE: With n=3, Shapiro-Wilk has very low power. Treat results as indicative.
 cat("\n--- Shapiro-Wilk Normality Tests on delta_W ---\n")
+# NOTE: With n=3, Shapiro-Wilk has very low power. Treat results as indicative.
 by(flange_data$delta_W_g, flange_data$treatment, shapiro.test)
 
 # =============================================================================

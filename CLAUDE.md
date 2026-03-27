@@ -12,16 +12,16 @@ biofouling mass accumulation after a 2-week deployment in tropical waters off
 Kihei, Maui, Hawaii.
 
 ## Experimental Design (from Maui2026Methods_Draft1.pdf)
-- **8 total sampling units:**
+- **9 total sampling units:**
   - 3 × SLIPS-coated glass flanges
   - 3 × uncoated glass flanges (control)
-  - 2 × factory-standard acrylic lens caps (no treatment; coating incompatible)
+  - 3 × factory-standard acrylic lens caps (no treatment; coating incompatible)
 - **Location:** Shallow sandy-bottom, Kihei, Maui, HI (~6 m / max 20 ft)
 - **Duration:** 14-day deployment
-- **Substrate masses (approx):**
-  - Glass flanges: ~50 g (0.05 kg, annealed glass, 2.2322" diameter)
-  - SLIPS coating adds ~0.5–1 g to glass mass
-  - Acrylic caps: ~17 g lighter than glass = ~33 g
+- **Substrate masses (measured):**
+  - Control glass flanges: ~34.8 g
+  - SLIPS-coated glass flanges: ~35.5 g (~0.7 g heavier due to coating)
+  - Acrylic caps: ~1.7 g lighter than control glass = ~33.1 g
   - All units measured in **grams**
 - **Flange diameter:** 2.2322 in (~56.7 mm), fabricated by Peninsula Glass Co.
 - **Housings:** Blue Robotics cylindrical pressure casings
