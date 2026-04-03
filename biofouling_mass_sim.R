@@ -12,7 +12,7 @@ library(tidyverse)
 library(ggplot2)
 
 dir.create("outputs", showWarnings = FALSE)  # ensure outputs/ folder exists
-
+setwd("/Users/corinnepickering/Desktop/Thode_lab/SLIPS/maui2026/Mass_before_after/Stats_sim")
 set.seed(42)  # reproducibility
 
 # =============================================================================
@@ -161,12 +161,14 @@ ggsave("outputs/delta_W_dotplot.png", p1, width = 7, height = 5, dpi = 300)
 # 6b. Before/After mass table plot
 p2 <- flange_data |>
   pivot_longer(cols = c(W1_g, W3_g), names_to = "timepoint", values_to = "mass_g") |>
-  mutate(timepoint = recode(timepoint, W1_g = "Pre-deployment (W1)",
-                                       W3_g = "Post-desiccation (W3)")) |>
+  mutate(timepoint = factor(
+    recode(timepoint, W1_g = "Pre-deployment (W1)", W3_g = "Post-desiccation (W3)"),
+    levels = c("Pre-deployment (W1)", "Post-desiccation (W3)")  # enforce correct order
+  )) |>
   ggplot(aes(x = timepoint, y = mass_g, group = sample_id, color = treatment)) +
   geom_line(alpha = 0.6) +
   geom_point(size = 3) +
-  facet_wrap(~ treatment, scales = "free_y") +
+  facet_wrap(~ treatment) +  # shared y-axis across all panels
   labs(
     title = "Flange Cap Mass Before & After Deployment (Simulated)",
     x = NULL, y = "Mass (g)",
@@ -192,3 +194,4 @@ qqnorm(acryl, main = "Q-Q: Acrylic delta_W");       qqline(acryl)
 dev.copy(png, "outputs/qq_plots.png", width = 900, height = 400, res = 100)
 dev.off()
 par(mfrow = c(1, 1))
+
