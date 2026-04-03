@@ -11,6 +11,8 @@
 library(tidyverse)
 library(ggplot2)
 
+dir.create("outputs", showWarnings = FALSE)  # ensure outputs/ folder exists
+
 set.seed(42)  # reproducibility
 
 # =============================================================================
@@ -154,7 +156,7 @@ p1 <- ggplot(flange_data, aes(x = treatment, y = delta_W_g, color = treatment)) 
   theme(legend.position = "none")
 
 print(p1)
-ggsave("delta_W_dotplot.png", p1, width = 7, height = 5, dpi = 300)
+ggsave("outputs/delta_W_dotplot.png", p1, width = 7, height = 5, dpi = 300)
 
 # 6b. Before/After mass table plot
 p2 <- flange_data |>
@@ -180,11 +182,13 @@ p2 <- flange_data |>
         axis.text.x = element_text(angle = 15, hjust = 1))
 
 print(p2)
-ggsave("before_after_mass.png", p2, width = 9, height = 4, dpi = 300)
+ggsave("outputs/before_after_mass.png", p2, width = 9, height = 4, dpi = 300)
 
 # 6c. Q-Q plots for normality assessment
 par(mfrow = c(1, 3))
 qqnorm(ctrl,  main = "Q-Q: Glass Control delta_W"); qqline(ctrl)
 qqnorm(slips, main = "Q-Q: Glass SLIPS delta_W");   qqline(slips)
 qqnorm(acryl, main = "Q-Q: Acrylic delta_W");       qqline(acryl)
+dev.copy(png, "outputs/qq_plots.png", width = 900, height = 400, res = 100)
+dev.off()
 par(mfrow = c(1, 1))
